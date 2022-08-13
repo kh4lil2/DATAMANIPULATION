@@ -1,0 +1,46 @@
+database creation
+CREATE DATABASE Store;
+
+creation of customer table
+CREATE TABLE customer (
+customer_id int(20) PRIMARY KEY,
+customer_name varchar(20) NOT NULL,
+customer_tel int(20)
+);
+
+
+CREATION OF TABLE PRODUCT
+CREATE TABLE product (
+product_id int(20) PRIMARY KEY,
+product_name varchar(20) NOT NULL,
+product_price int(20),
+product_gategory varchar(20)
+);
+
+
+CREATION OF TABLE ORDERS
+CREATE TABLE orders (
+customer_id varchar(20),
+product_id varchar(20),
+order_date DATE,
+quantity int,
+total_amount int,
+CONSTRAINT fkcustomer FOREIGN KEY (customer_id) REFERENCES orders (customer_id),
+CONSTRAINT fkproduct FOREIGN KEY (product_id) REFERENCES orders (product_id)
+);
+
+insert data in the Customer
+INSERT INTO customers (Customer_id,customer_name, customer_tel)
+VALUES('C01', 'ALI', '71321009'),
+VALUES('C02', 'ASMA', '77345823');
+
+
+insert data in the Product
+INSERT INTO product (product_id, product_name, category, price)
+VALUES ('P01', 'SAMSUNG GALAXY', 'Smartphone', '3299'),
+VALUES('P02', 'ASUS Notebook', 'PC', 4599);
+
+insert data in the orders
+INSERT INTO orders (customer_id, product_id, order_date, quantity, total_amount)
+VALUES('C01', 'P02', 'NULL', '2', '9198'),
+VALUES('C02', 'P01', '29/05/2020', 3299);
